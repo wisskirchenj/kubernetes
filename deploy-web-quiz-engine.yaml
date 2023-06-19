@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-quiz-engine
+  labels:
+    k8s-app: web-quiz-engine
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: web-quiz-engine
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        k8s-app: web-quiz-engine
+    spec:
+      containers:
+      - image: wisskirchenj/quiz-engine:0.0.9-SNAPSHOT
+        imagePullPolicy: IfNotPresent
+        name: web-quiz-engine
+        ports:
+        - containerPort: 9009
+          protocol: TCP
+        envFrom:
+        - configMapRef:
+            name: web-quiz-engine-cm
+        env:
+        - name: spring.datasource.password
+          valueFrom:
+            secretKeyRef:
+              name: postgres-user-secret
+              key: password
+        resources: {}
+        imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+status: {}
