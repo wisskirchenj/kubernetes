@@ -12,7 +12,7 @@ data:
   management.endpoints.web.exposure.include: '*'
   server.port: "9000"
   spring.datasource.password: password
-  spring.datasource.url: jdbc:postgresql://pg-database:5432/code
+  spring.datasource.url: jdbc:postgresql://postgres-service:5432/code
   spring.datasource.username: postgres
   spring.jpa.database-platform: org.hibernate.dialect.PostgreSQLDialect
   spring.jpa.hibernate.ddl-auto: update
