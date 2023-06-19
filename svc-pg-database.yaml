@@ -6,9 +6,6 @@ metadata:
     k8s-app: pg-database
   namespace: default
 spec:
-  clusterIP: 10.99.49.151
-  clusterIPs:
-  - 10.99.49.151
   internalTrafficPolicy: Cluster
   ipFamilies:
   - IPv4
