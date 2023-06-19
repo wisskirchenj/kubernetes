@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  generation: 2
+  labels:
+    k8s-app: pg-database
+  name: pg-database
+  namespace: default
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      k8s-app: pg-database
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        k8s-app: pg-database
+      name: pg-database
+    spec:
+      containers:
+      - env:
+        - name: POSTGRES_PASSWORD
+          value: password
+        - name: POSTGRES_DB
+          value: code
+        image: postgres:alpine
+        imagePullPolicy: IfNotPresent
+        name: pg-database
+        securityContext:
+          privileged: false
+        volumeMounts:
+        - name: pg-persistent-storage
+          mountPath: /var/lib/postgresql/data
+      volumes:
+      - name: pg-persistent-storage
+        persistentVolumeClaim:
+          claimName: postgres-pv-claim
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30

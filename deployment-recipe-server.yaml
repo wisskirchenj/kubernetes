@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recipe-server
+  labels:
+    k8s-app: recipe-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: recipe-server
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        k8s-app: recipe-server
+    spec:
+      containers:
+      - image: wisskirchenj/recipe-server:0.1.9-SNAPSHOT
+        name: recipe-server
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        volumeMounts:
+        - name: recipe-volume
+          mountPath: /workspace/src/main/resources
+        resources: {}
+        imagePullPolicy: IfNotPresent
+      volumes:
+      - name: recipe-volume
+        persistentVolumeClaim:
+          claimName: recipe-server-pvc
+      restartPolicy: Always
+status: {}

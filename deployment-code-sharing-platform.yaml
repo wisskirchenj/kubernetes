@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: code-sharing-platform
+  labels:
+    k8s-app: code-sharing-platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: code-sharing-platform
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        k8s-app: code-sharing-platform
+    spec:
+      containers:
+      - image: wisskirchenj/code-sharing-platform:0.5-SNAPSHOT
+        name: code-sharing-platform
+        ports:
+        - containerPort: 9000
+          protocol: TCP
+        resources: {}
+        imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+status: {}
