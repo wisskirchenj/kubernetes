@@ -11,7 +11,6 @@ data:
   management.endpoint.shutdown.enabled: "true"
   management.endpoints.web.exposure.include: '*'
   server.port: "9000"
-  spring.datasource.password: password
   spring.datasource.url: jdbc:postgresql://postgres-service:5432/code
   spring.datasource.username: postgres
   spring.jpa.database-platform: org.hibernate.dialect.PostgreSQLDialect

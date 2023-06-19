@@ -24,7 +24,10 @@ spec:
       containers:
       - env:
         - name: POSTGRES_PASSWORD
-          value: password
+          valueFrom:
+            secretKeyRef:
+              name: postgres-user-secret
+              key: password
         - name: POSTGRES_DB
           value: code
         image: postgres:alpine

@@ -25,6 +25,12 @@ spec:
         envFrom:
         - configMapRef:
             name: code-sharing-platform-cm
+        env:
+        - name: spring.datasource.password
+          valueFrom:
+            secretKeyRef:
+              name: postgres-user-secret
+              key: password
         resources: {}
         imagePullPolicy: IfNotPresent
       restartPolicy: Always
