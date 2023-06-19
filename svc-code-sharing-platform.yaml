@@ -2,6 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: code-sharing-service
+  labels:
+    k8s-app: code-sharing-platform
 spec:
   ports:
   - name: 9000-tcp

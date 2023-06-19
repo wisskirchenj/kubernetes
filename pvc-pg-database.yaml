@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: postgres-pv-claim
+  name: pg-database-pvc
   labels:
     k8s-app: pg-database
 spec:
