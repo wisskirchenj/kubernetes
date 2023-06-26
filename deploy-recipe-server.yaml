@@ -17,7 +17,8 @@ spec:
         k8s-app: recipe-server
     spec:
       containers:
-      - image: wisskirchenj/recipe-server:0.1.9-SNAPSHOT
+      - image: wisskirchenj/recipe-server:0.2.0-SNAPSHOT
+        imagePullPolicy: IfNotPresent
         name: recipe-server
         ports:
         - containerPort: 8080
@@ -25,14 +26,12 @@ spec:
         envFrom:
         - configMapRef:
             name: recipe-server-cm
-        volumeMounts:
-        - name: recipe-volume
-          mountPath: /workspace/src/main/resources
+        env:
+        - name: spring.datasource.password
+          valueFrom:
+            secretKeyRef:
+              name: postgres-user-secret
+              key: password
         resources: {}
-        imagePullPolicy: IfNotPresent
-      volumes:
-      - name: recipe-volume
-        persistentVolumeClaim:
-          claimName: recipe-server-pvc
       restartPolicy: Always
 status: {}

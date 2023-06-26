@@ -17,7 +17,7 @@ spec:
         k8s-app: code-sharing-platform
     spec:
       containers:
-      - image: wisskirchenj/code-sharing-platform:0.5-SNAPSHOT
+      - image: wisskirchenj/code-sharing-platform:0.5.5-SNAPSHOT
         name: code-sharing-platform
         ports:
         - containerPort: 9000

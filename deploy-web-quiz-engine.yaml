@@ -17,7 +17,7 @@ spec:
         k8s-app: web-quiz-engine
     spec:
       containers:
-      - image: wisskirchenj/quiz-engine:0.0.9-SNAPSHOT
+      - image: wisskirchenj/quiz-engine:0.1-SNAPSHOT
         imagePullPolicy: IfNotPresent
         name: web-quiz-engine
         ports:
@@ -33,6 +33,5 @@ spec:
               name: postgres-user-secret
               key: password
         resources: {}
-        imagePullPolicy: IfNotPresent
       restartPolicy: Always
 status: {}
