@@ -9,6 +9,7 @@ data:
   management.endpoint.shutdown.enabled: "true"
   management.endpoints.web.exposure.include: '*'
   server.port: "9009"
+  spring.security.oauth2.resourceserver.jwt.issuer-uri: http://authorization-service:5050
   spring.datasource.url: jdbc:postgresql://postgres-service:5432/quiz
   spring.datasource.username: postgres
   spring.jpa.database-platform: org.hibernate.dialect.PostgreSQLDialect

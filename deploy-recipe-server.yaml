@@ -17,7 +17,7 @@ spec:
         k8s-app: recipe-server
     spec:
       containers:
-      - image: wisskirchenj/recipe-server:0.2.0-SNAPSHOT
+      - image: wisskirchenj/recipe-server:0.3.0-SNAPSHOT
         imagePullPolicy: IfNotPresent
         name: recipe-server
         ports:

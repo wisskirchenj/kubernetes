@@ -23,3 +23,6 @@ data:
   spring.security.oauth2.client.registration.spring.scope: user.read,user.write,openid
   spring.security.oauth2.client.provider.spring.issuer-uri: http://authorization-service:5050
   logging.level.org.springframework.security: trace
+  gateway.routes.recipe: http://recipe-service:9090/
+  gateway.routes.code: http://code-sharing-service:9000/
+  gateway.routes.quiz: http://quiz-engine-service:9009/
