@@ -6,6 +6,10 @@ metadata:
     k8s-app: authorization-server
   namespace: default
 spec:
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
   ports:
   - name: 5050-tcp
     port: 5050
@@ -13,6 +17,5 @@ spec:
     targetPort: 5050
   selector:
     k8s-app: authorization-server
-  type: LoadBalancer
-status:
-  loadBalancer: {}
+  sessionAffinity: None
+  type: ClusterIP

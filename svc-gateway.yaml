@@ -7,13 +7,10 @@ metadata:
   namespace: default
 spec:
   ports:
-  - name: 5500-tcp
+  - protocol: TCP
     port: 5500
     protocol: TCP
     targetPort: 5500
   selector:
     k8s-app: gateway
-  sessionAffinity: None
   type: LoadBalancer
-status:
-  loadBalancer: {}
