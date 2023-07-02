@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: authorization-server-cm
+  namespace: default
+  labels:
+    k8s-app: authorization-server
+data:
+  management.endpoint.shutdown.enabled: "true"
+  management.endpoints.web.exposure.include: '*'
+  server.port: "5050"
+  spring.datasource.url: jdbc:postgresql://postgres-service:5432/users
+  spring.datasource.username: postgres
+  spring.jpa.database-platform: org.hibernate.dialect.PostgreSQLDialect
+  spring.jpa.hibernate.ddl-auto: update
+  spring.jpa.show-sql: "true"
+  spring.security.oauth2.authorizationserver.client.client-1.registration.client-id: gateway
+  spring.security.oauth2.authorizationserver.client.client-1.registration.client.secret: $2a$10$jdJGhzsiIqYFpjJiYWMl/eKDOd8vdyQis2aynmFN0dgJ53XvpzzwC
+  spring.security.oauth2.authorizationserver.client.client-1.registration.client-authentication-methods: client_secret_basic
+  spring.security.oauth2.authorizationserver.client.client-1.registration.authorization-grant-types: client_credentials,authorization_code,refresh_token
+  spring.security.oauth2.authorizationserver.client.client-1.registration.redirect-uris: http://gateway:5500/login/oauth2/code/spring
+  spring.security.oauth2.authorizationserver.client.client-1.registration.scopes: user.read,user.write,openid
+  spring.security.oauth2.authorizationserver.client.client-1.token.access-token-time-to-live: "600s"
+  spring.security.oauth2.authorizationserver.client.client-1.require-authorization-consent: "true"
+  logging.level.org.springframework.security: trace
