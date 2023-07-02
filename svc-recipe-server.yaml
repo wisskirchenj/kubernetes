@@ -6,6 +6,9 @@ metadata:
     k8s-app: recipe-server
 spec:
   internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
   ports:
   - name: 9090-tcp
     port: 9090
