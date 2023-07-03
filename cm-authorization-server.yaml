@@ -4,7 +4,7 @@ metadata:
   name: authorization-server-cm
   namespace: default
   labels:
-    k8s-app: authorization-server
+    k8s-app: authorization-gateway
 data:
   management.endpoint.shutdown.enabled: "true"
   management.endpoints.web.exposure.include: '*'
@@ -18,7 +18,7 @@ data:
   spring.security.oauth2.authorizationserver.client.client-1.registration.client.secret: $2a$10$jdJGhzsiIqYFpjJiYWMl/eKDOd8vdyQis2aynmFN0dgJ53XvpzzwC
   spring.security.oauth2.authorizationserver.client.client-1.registration.client-authentication-methods: client_secret_basic
   spring.security.oauth2.authorizationserver.client.client-1.registration.authorization-grant-types: client_credentials,authorization_code,refresh_token
-  spring.security.oauth2.authorizationserver.client.client-1.registration.redirect-uris: http://gateway:5500/login/oauth2/code/spring
+  spring.security.oauth2.authorizationserver.client.client-1.registration.redirect-uris: http://127.0.0.1:5500/login/oauth2/code/spring
   spring.security.oauth2.authorizationserver.client.client-1.registration.scopes: user.read,user.write,openid
   spring.security.oauth2.authorizationserver.client.client-1.token.access-token-time-to-live: "600s"
   spring.security.oauth2.authorizationserver.client.client-1.require-authorization-consent: "true"

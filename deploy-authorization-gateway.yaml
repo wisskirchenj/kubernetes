@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gateway
+  name: authorization-gateway
   labels:
-    k8s-app: gateway
+    k8s-app: authorization-gateway
 spec:
   replicas: 1
   selector:
     matchLabels:
-      k8s-app: gateway
+      k8s-app: authorization-gateway
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        k8s-app: gateway
+        k8s-app: authorization-gateway
     spec:
       containers:
       - image: wisskirchenj/gateway:0.1.0-SNAPSHOT
@@ -25,6 +25,22 @@ spec:
         envFrom:
         - configMapRef:
             name: gateway-cm
+        env:
+        - name: spring.datasource.password
+          valueFrom:
+            secretKeyRef:
+              name: postgres-user-secret
+              key: password
+        resources: {}
+        imagePullPolicy: IfNotPresent
+      - image: wisskirchenj/authorization-server:0.1.0-SNAPSHOT
+        name: authorization-server
+        ports:
+        - containerPort: 5050
+          protocol: TCP
+        envFrom:
+        - configMapRef:
+            name: authorization-server-cm
         env:
         - name: spring.datasource.password
           valueFrom:

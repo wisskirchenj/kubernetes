@@ -4,7 +4,7 @@ metadata:
   name: gateway-cm
   namespace: default
   labels:
-    k8s-app: gateway
+    k8s-app: authorization-gateway
 data:
   management.endpoint.shutdown.enabled: "true"
   management.endpoints.web.exposure.include: '*'
@@ -21,7 +21,7 @@ data:
   spring.security.oauth2.client.registration.spring.authorization-grant-type: authorization_code
   spring.security.oauth2.client.registration.spring.redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
   spring.security.oauth2.client.registration.spring.scope: user.read,user.write,openid
-  spring.security.oauth2.client.provider.spring.issuer-uri: http://authorization-service:5050
+  spring.security.oauth2.client.provider.spring.issuer-uri: http://localhost:5050
   logging.level.org.springframework.security: TRACE
   logging.level.org.springframework.cloud.gateway: TRACE
   logging.level.org.springframework.http.server.reactive: DEBUG

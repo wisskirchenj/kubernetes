@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: authorization-gateway
+  labels:
+    k8s-app: authorization-gateway
+  namespace: default
+spec:
+  ports:
+  - name: 5500-tcp
+    port: 5500
+    protocol: TCP
+    targetPort: 5500
+  - name: 5050-tcp
+    port: 5050
+    protocol: TCP
+    targetPort: 5050
+  selector:
+    k8s-app: authorization-gateway
+  type: LoadBalancer
