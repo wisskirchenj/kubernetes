@@ -28,11 +28,15 @@ Further Ideas, to come up, I hope:
 
 ## Progress
 
-12.04.23 Initial minikue setup with hello-world service.
+12.06.23 Initial minikue setup with hello-world service.
 
-19.04.22 Five services are running:
+19.06.23 Five services are running:
 - a **quiz-engine** service (Basic Auth) with an extensible Web-Quiz as CRUD-Rest Spring Boot application on Json-Basis (no frontend).
 - a **code-sharing** service (Basic auth) - à la pastebin - to store and exchange code snippets (rudimentary Thymeleaf-rendered HTML frontend and Json-API).
 - a **recipe** service - running as Native image on Spring Boot 3.1.x, where recipes can be stored, patched and queried
 - a postgres-service using a Postgres-OCI on alpine basis, running multiple databases (two as of today)
 - a pgadmin-service to manage the database via NodePort exposure from the browser.
+
+03.07.23 Added deployment for authoriation-gateway, consisting of a shared pod with
+- a Spring Cloud gateway container, which app also implement a oauth2-client, that connects via authorization_code workflow to the Spring authorization server (see below) and offers a webflux endpoint for user registry, that persists into the cloud Postgresql-database
+- a Spring Boot container running a Spring Oauth2-AuthorizationServer, that is addressed by the gateway and uses the users-database inside the postgres-service to authorize OIDC logins, redirected by the gateway and serves id- and JWT-tokens for accessing the Oauth2-ressourceServer implementing web-services.
