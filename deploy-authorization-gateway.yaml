@@ -32,7 +32,7 @@ spec:
               name: postgres-user-secret
               key: password
         resources: {}
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
       - image: wisskirchenj/authorization-server:0.1.0-SNAPSHOT
         name: authorization-server
         ports:
@@ -48,6 +48,6 @@ spec:
               name: postgres-user-secret
               key: password
         resources: {}
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
       restartPolicy: Always
 status: {}

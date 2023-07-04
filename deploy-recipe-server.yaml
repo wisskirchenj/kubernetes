@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - image: wisskirchenj/recipe-server:0.3.0-SNAPSHOT
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         name: recipe-server
         ports:
         - containerPort: 8080
