@@ -10,6 +10,7 @@ data:
   management.endpoints.web.exposure.include: '*'
   server.port: "9090"
   spring.security.oauth2.resourceserver.jwt.issuer-uri: http://authorization-gateway:5050
+  security.oauth2.issuer-validator-uri: http://localhost:5050
   spring.datasource.url: jdbc:postgresql://postgres-service:5432/recipe
   spring.datasource.username: postgres
   spring.jpa.database-platform: org.hibernate.dialect.PostgreSQLDialect
