@@ -37,6 +37,6 @@ Further Ideas, to come up, I hope:
 - a postgres-service using a Postgres-OCI on alpine basis, running multiple databases (two as of today)
 - a pgadmin-service to manage the database via NodePort exposure from the browser.
 
-03.07.23 Added deployment for authoriation-gateway, consisting of a shared pod with
-- a Spring Cloud gateway container, which app also implement a oauth2-client, that connects via authorization_code workflow to the Spring authorization server (see below) and offers a webflux endpoint for user registry, that persists into the cloud Postgresql-database
-- a Spring Boot container running a Spring Oauth2-AuthorizationServer, that is addressed by the gateway and uses the users-database inside the postgres-service to authorize OIDC logins, redirected by the gateway and serves id- and JWT-tokens for accessing the Oauth2-ressourceServer implementing web-services.
+03.07.23 Added deployment for authorization-gateway, consisting of a shared pod with
+- a Spring Cloud gateway container, whose (native image) app also implements an oauth2-client, that connects via authorization_code workflow to the Spring authorization server (see below). Also it offers a webflux endpoint for user registry, that persists into the cloud Postgresql-database "users".
+- a Spring Boot container running a Spring oauth2-authorization-server, that is addressed by the gateway and uses the users-database to authorize OIDC logins, redirected by the gateway. It serves id- and JWT-tokens for accessing the Oauth2-ressourceServers included in the Spring Boot Web-services.
