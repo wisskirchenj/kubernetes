@@ -31,6 +31,11 @@ spec:
             secretKeyRef:
               name: postgres-user-secret
               key: password
+        - name: spring.security.oauth2.authorizationserver.client.client-1.registration.client-secret
+          valueFrom:
+            secretKeyRef:
+              name: authclient-gateway-secret
+              key: password
         resources: {}
         imagePullPolicy: Always
       - image: wisskirchenj/authorization-server:0.1.0-SNAPSHOT
@@ -47,6 +52,11 @@ spec:
             secretKeyRef:
               name: postgres-user-secret
               key: password
+        - name: spring.security.oauth2.client.registration.spring.client-secret
+          valueFrom:
+            secretKeyRef:
+              name: authclient-gateway-secret
+              key: bcrypt
         resources: {}
         imagePullPolicy: Always
       restartPolicy: Always
