@@ -17,27 +17,6 @@ spec:
         k8s-app: authorization-gateway
     spec:
       containers:
-      - image: wisskirchenj/gateway:0.1.0-SNAPSHOT
-        name: gateway
-        ports:
-        - containerPort: 5500
-          protocol: TCP
-        envFrom:
-        - configMapRef:
-            name: gateway-cm
-        env:
-        - name: spring.datasource.password
-          valueFrom:
-            secretKeyRef:
-              name: postgres-user-secret
-              key: password
-        - name: spring.security.oauth2.authorizationserver.client.client-1.registration.client-secret
-          valueFrom:
-            secretKeyRef:
-              name: authclient-gateway-secret
-              key: password
-        resources: {}
-        imagePullPolicy: Always
       - image: wisskirchenj/authorization-server:0.1.0-SNAPSHOT
         name: authorization-server
         ports:
@@ -57,6 +36,27 @@ spec:
             secretKeyRef:
               name: authclient-gateway-secret
               key: bcrypt
+        resources: {}
+        imagePullPolicy: Always
+      - image: wisskirchenj/gateway:0.1.0-SNAPSHOT
+        name: gateway
+        ports:
+        - containerPort: 5500
+          protocol: TCP
+        envFrom:
+        - configMapRef:
+            name: gateway-cm
+        env:
+        - name: spring.datasource.password
+          valueFrom:
+            secretKeyRef:
+              name: postgres-user-secret
+              key: password
+        - name: spring.security.oauth2.authorizationserver.client.client-1.registration.client-secret
+          valueFrom:
+            secretKeyRef:
+              name: authclient-gateway-secret
+              key: password
         resources: {}
         imagePullPolicy: Always
       restartPolicy: Always
