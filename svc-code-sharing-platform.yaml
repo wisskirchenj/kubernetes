@@ -5,6 +5,7 @@ metadata:
   labels:
     k8s-app: code-sharing-platform
 spec:
+  internalTrafficPolicy: Cluster
   ports:
   - name: 9000-tcp
     port: 9000
@@ -12,6 +13,7 @@ spec:
     targetPort: 9000
   selector:
     k8s-app: code-sharing-platform
-  type: LoadBalancer
+  sessionAffinity: None
+  type: ClusterIP
 status:
   loadBalancer: {}
