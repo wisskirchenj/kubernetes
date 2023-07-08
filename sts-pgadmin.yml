@@ -22,7 +22,7 @@ spec:
       containers:
         - name: pgadmin
           image: dpage/pgadmin4:latest
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           env:
           - name: PGADMIN_DEFAULT_EMAIL
             value: juergen.wisskirchen@cofinpro.de
