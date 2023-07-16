@@ -17,8 +17,8 @@ spec:
         k8s-app: web-quiz-engine
     spec:
       containers:
-      - image: wisskirchenj/quiz-engine:0.1-SNAPSHOT
-        imagePullPolicy: IfNotPresent
+      - image: wisskirchenj/quiz-engine:0.1.2-SNAPSHOT
+        imagePullPolicy: Always
         name: web-quiz-engine
         ports:
         - containerPort: 9009

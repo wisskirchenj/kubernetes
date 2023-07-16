@@ -17,7 +17,7 @@ spec:
         k8s-app: authorization-gateway
     spec:
       containers:
-      - image: wisskirchenj/authorization-server:0.1.0-SNAPSHOT
+      - image: wisskirchenj/authorization-server:0.1.2-SNAPSHOT
         name: authorization-server
         ports:
         - containerPort: 5050
@@ -38,7 +38,7 @@ spec:
               key: bcrypt
         resources: {}
         imagePullPolicy: Always
-      - image: wisskirchenj/gateway:0.1.1-SNAPSHOT
+      - image: wisskirchenj/gateway:0.1.2-SNAPSHOT
         name: gateway
         ports:
         - containerPort: 5500

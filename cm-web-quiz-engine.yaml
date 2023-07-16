@@ -17,3 +17,4 @@ data:
   spring.jpa.hibernate.ddl-auto: update
   spring.jpa.show-sql: "true"
   server.servlet.context-path: /juergen
+  logging.level.org.springframework.security: TRACE

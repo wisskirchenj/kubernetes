@@ -12,6 +12,7 @@ spec:
     targetPort: 9009
   selector:
     k8s-app: web-quiz-engine
-  type: LoadBalancer
+  sessionAffinity: None
+  type: ClusterIP
 status:
   loadBalancer: {}
