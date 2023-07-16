@@ -11,7 +11,7 @@ The app deployments are exposed by services of type LoadBalancer, which are easi
 Next step was to externalize the Spring configurations via ConfigMaps and introducing a secret for the credentials to Postgres. Finally I wanted to be able to observe and manage the database, so I installed a PGAdmin as StatefulSet, together with a PVC and a pgadmin-service that minikube can on-demand expose to my browser.
 
 Further Ideas, to come up, I hope: 
-- Oauth2 security with new Spring 3.1.x Oauth2-Authorization-Server
+- :white-check-mark: Oauth2 security with new Spring 3.1.x Oauth2-Authorization-Server
 - Service registry with spring cloud
 - Spring Cloud Gateway and most probably Spring Cloud Configuration Server
 - Some toy use-cases for Spring Cloud Kubernetes (maybe)
@@ -31,10 +31,10 @@ Further Ideas, to come up, I hope:
 12.06.23 Initial minikue setup with hello-world service.
 
 19.06.23 Five services are running:
-- a **quiz-engine** service (Basic Auth) with an extensible Web-Quiz as CRUD-Rest Spring Boot application on Json-Basis (no frontend).
-- a **code-sharing** service (Basic auth) - à la pastebin - to store and exchange code snippets (rudimentary Thymeleaf-rendered HTML frontend and Json-API).
+- a **quiz-engine** service with an extensible Web-Quiz as CRUD-Rest Spring Boot application on Json-Basis (no frontend).
+- a **code-sharing** service - à la pastebin - to store and exchange code snippets (rudimentary Thymeleaf-rendered HTML frontend and Json-API).
 - a **recipe** service - running as Native image on Spring Boot 3.1.x, where recipes can be stored, patched and queried
-- a postgres-service using a Postgres-OCI on alpine basis, running multiple databases (two as of today)
+- a postgres-service using a Postgres-OCI on alpine basis, running multiple databases (five as of today)
 - a pgadmin-service to manage the database via NodePort exposure from the browser.
 
 03.07.23 Added deployment for authorization-gateway, consisting of a shared pod with
