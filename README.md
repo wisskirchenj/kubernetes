@@ -10,8 +10,8 @@ The app deployments are exposed by services of type LoadBalancer, which are easi
 
 Next step was to externalize the Spring configurations via ConfigMaps and introducing a secret for the credentials to Postgres. Finally I wanted to be able to observe and manage the database, so I installed a PGAdmin as StatefulSet, together with a PVC and a pgadmin-service that minikube can on-demand expose to my browser.
 
-Further Ideas, to come up, I hope: 
-- :white-check-mark: Oauth2 security with new Spring 3.1.x Oauth2-Authorization-Server
+Further Ideas, to come up, I hope (✅ = already realized): 
+- ✅ Oauth2 security with new Spring 3.1.x Oauth2-Authorization-Server
 - Service registry with spring cloud
 - Spring Cloud Gateway and most probably Spring Cloud Configuration Server
 - Some toy use-cases for Spring Cloud Kubernetes (maybe)
