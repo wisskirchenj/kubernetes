@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: account-reactive
+  labels:
+    k8s-app: account-reactive
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: account-reactive
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        k8s-app: account-reactive
+    spec:
+      containers:
+      - image: wisskirchenj/account-reactive:0.1-SNAPSHOT
+        imagePullPolicy: Always
+        name: account-reactive
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        envFrom:
+        - configMapRef:
+            name: account-reactive-cm
+        env:
+        - name: spring.r2dbc.password
+          valueFrom:
+            secretKeyRef:
+              name: postgres-user-secret
+              key: password
+        resources: {}
+      restartPolicy: Always
+status: {}
