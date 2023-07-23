@@ -8,10 +8,15 @@ metadata:
 data:
   management.endpoint.shutdown.enabled: "true"
   management.endpoints.web.exposure.include: '*'
-  server.port: "8080"
+  server.port: "5080"
   spring.r2dbc.url: r2dbc:postgresql://postgres-service:5432/account
   spring.r2dbc.username: postgres
   spring.sql.init.mode: always
+  spring.sql.init.schema-locations: classpath:initTables.sql
+  spring.sql.init.data-locations: classpath:initData.sql
   spring.jackson.serialization.INDENT_OUTPUT: "true"
   server.error.include-message: always
+  server.ssl.key-store-type: PKCS12
+  server.ssl.key-alias: accountant_service
+  server.ssl.key-store: classpath:keystore/service.p12
   logging.level.root: INFO

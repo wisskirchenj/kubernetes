@@ -7,11 +7,10 @@ metadata:
   namespace: default
 spec:
   ports:
-  - name: 8080-tcp
-    port: 8080
+  - name: 5080-tcp
+    port: 5080
     protocol: TCP
-    targetPort: 8080
+    targetPort: 5080
   selector:
     k8s-app: account-reactive
   type: LoadBalancer
-  

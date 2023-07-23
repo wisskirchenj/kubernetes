@@ -27,11 +27,16 @@ spec:
         - configMapRef:
             name: account-reactive-cm
         env:
+        - name: server.ssl.key-store-password
+          valueFrom:
+            secretKeyRef:
+              name: ssl-keystore-secret
+              key: password
         - name: spring.r2dbc.password
           valueFrom:
             secretKeyRef:
               name: postgres-user-secret
-              key: password
+              key: password              
         resources: {}
       restartPolicy: Always
 status: {}
