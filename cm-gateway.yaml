@@ -23,8 +23,6 @@ data:
   spring.security.oauth2.client.provider.spring.issuer-uri: http://localhost:5050
   logging.level.org.springframework.security: TRACE
   logging.level.org.springframework.cloud.gateway: TRACE
-  logging.level.org.springframework.http.server.reactive: DEBUG
-  logging.level.org.springframework.web.reactive: DEBUG
   gateway.routes.recipe: http://recipe-service:9090/
   gateway.routes.code: http://code-sharing-service:9000/
   gateway.routes.quiz: http://quiz-engine-service:9009/
