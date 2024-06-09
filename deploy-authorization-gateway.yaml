@@ -38,7 +38,7 @@ spec:
               key: bcrypt
         resources: {}
         imagePullPolicy: Always
-      - image: wisskirchenj/gateway:0.1.6-SNAPSHOT
+      - image: wisskirchenj/gateway:0.2.0-SNAPSHOT
         name: gateway
         ports:
         - containerPort: 5500

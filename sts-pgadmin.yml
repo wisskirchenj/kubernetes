@@ -25,7 +25,7 @@ spec:
           imagePullPolicy: Always
           env:
           - name: PGADMIN_DEFAULT_EMAIL
-            value: juergen.wisskirchen@cofinpro.de
+            value: wisskirchen.juergen@gmail.de
           - name: PGADMIN_DEFAULT_PASSWORD
             valueFrom:
               secretKeyRef:
