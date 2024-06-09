@@ -26,3 +26,5 @@ data:
   gateway.routes.recipe: http://recipe-service:9090/
   gateway.routes.code: http://code-sharing-service:9000/
   gateway.routes.quiz: http://quiz-engine-service:9009/
+  spring.cloud.refresh.enabled: "false"
+  
