@@ -31,7 +31,7 @@ spec:
         - name: POSTGRES_DB
           value: code
         image: postgres:alpine
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         name: pg-database
         securityContext:
           privileged: false
